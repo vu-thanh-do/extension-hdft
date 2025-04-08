@@ -207,7 +207,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.5);
   display: flex;
   flex-direction: column;
-  height: 580px;
+  height: 600px;
 }
 
 .main-header {
@@ -307,6 +307,48 @@ body {
   cursor: not-allowed;
   font-weight: normal;
   border-color: #dbe9f6;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 35px;
+  position: relative;
+}
+
+.copy-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2c82c9;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.copy-btn:hover {
+  color: #1a6cba;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.copy-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.proxy-container {
+  position: relative;
+}
+
+.error-proxy {
+  background-color: #fff0f0;
+  color: #d32f2f;
+  border-color: #ffcdd2;
 }
 
 .config-row {
@@ -496,6 +538,51 @@ body {
 
 .toggle-btn.active .toggle-text {
   color: white;
+}
+
+.toggle-btn.loading {
+  background: linear-gradient(145deg, #f0f0f0, #e0e0e0);
+}
+
+.loading-icon {
+  animation: rotate 1.5s linear infinite;
+  display: inline-block;
+}
+
+.copy-success {
+  position: absolute;
+  top: -25px;
+  right: 0;
+  background-color: rgba(44, 130, 201, 0.9);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 100;
+}
+
+.copy-success.show {
+  opacity: 1;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.toggle-btn:disabled,
+.save-btn:disabled,
+.open-btn:disabled,
+input:disabled,
+select:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .main-footer {
